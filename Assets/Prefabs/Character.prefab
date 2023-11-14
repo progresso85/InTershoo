@@ -229,5 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 2860045187547891579, guid: d8941c28e8ee3b64188f33d39b5ceccd, type: 3}
-  speed: 100
+  Monster: {fileID: 0}
+  speed: 0.08
   rb: {fileID: 0}

@@ -374,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 2050066406}
     - target: {fileID: 1379878796266250289, guid: 13989ecb15110364fa0237b04e758575, type: 3}
       propertyPath: speed
-      value: 0.05
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1379878796266250289, guid: 13989ecb15110364fa0237b04e758575, type: 3}
       propertyPath: Monster
