@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,9 @@ public class NewBehaviourScript : MonoBehaviour
     private Vector2 position;
     [SerializeField]
     private GameObject Bullet;
+
+    [SerializeField] 
+    private GameObject Monster;
 
     [SerializeField]
     private float speed;
@@ -32,8 +36,21 @@ public class NewBehaviourScript : MonoBehaviour
             Debug.Log(rb.position);
             Debug.Log(speed);
         }
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            Instantiate(Monster, new Vector2(2, 2), Quaternion.identity);
+            Instantiate(Monster, new Vector2(-2, 2), Quaternion.identity);
+            Instantiate(Monster, new Vector2(-2, -2), Quaternion.identity);
+        }
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!(collision.collider.tag == "Wall" || collision.collider.tag == "PlayerBullet"))
+        {
+            Debug.Log(collision.collider.tag);
+            Destroy(gameObject);
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {   
