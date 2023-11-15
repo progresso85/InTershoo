@@ -16,7 +16,7 @@ public class Skull : Monster
 
     new private void Start()
     {
-        Instantiate(EnemyBullet, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+        shoot();
     }
 
     void Update()
@@ -29,6 +29,11 @@ public class Skull : Monster
         {
             Destroy(gameObject);
         }
+    }
+
+    void shoot()
+    {
+        Instantiate(SimpleProjectile, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
     }
 }
 
