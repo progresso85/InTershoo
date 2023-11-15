@@ -13,6 +13,18 @@ public class Monster : MonoBehaviour
     protected float maxPositionY;
     protected float maxPositionX;
     protected float speed;
+    [SerializeField]
+    private AudioClip DamageSoundClip;
+
+    [SerializeField]
+    private AudioClip DieSoundClip;
+
+    private AudioSource audioSource;
+    
+    protected void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
@@ -24,8 +36,15 @@ public class Monster : MonoBehaviour
         {
             Debug.Log("Collision");
             health -= 1;
+            audioSource.clip = DamageSoundClip;
+            audioSource.Play();
+
             if (health == 0)
             {
+                audioSource.clip = DieSoundClip;
+                audioSource.Play();
+                audioSource.clip = DamageSoundClip;
+                audioSource.Play();
                 Destroy(this.gameObject);
             }
         }

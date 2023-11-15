@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6108858501477927073}
   - component: {fileID: 3345919595339726181}
   - component: {fileID: 1379878796266250289}
+  - component: {fileID: -8995072215147718881}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -233,6 +234,7 @@ MonoBehaviour:
   Monster2: {fileID: 0}
   speed: 0.08
   rb: {fileID: 0}
+  DamageSoundClip: {fileID: 8300000, guid: 05b6345addce72b4cbc2d3624a2faced, type: 3}
 --- !u!82 &-8995072215147718881
 AudioSource:
   m_ObjectHideFlags: 0
@@ -244,7 +246,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
