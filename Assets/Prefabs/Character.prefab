@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3831485293894242223}
   - component: {fileID: 2862840597266427459}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6108858501477927073}
   - component: {fileID: 3345919595339726181}
   - component: {fileID: 1379878796266250289}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -230,5 +230,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 2860045187547891579, guid: d8941c28e8ee3b64188f33d39b5ceccd, type: 3}
   Monster: {fileID: 0}
+  Monster2: {fileID: 0}
   speed: 0.08
   rb: {fileID: 0}
