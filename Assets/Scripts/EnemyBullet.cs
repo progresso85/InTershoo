@@ -19,7 +19,7 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.MovePosition(rb.position + new Vector2(0, speed));
+        rb.MovePosition(rb.position + new Vector2(0, -speed));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
