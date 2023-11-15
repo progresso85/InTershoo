@@ -4,41 +4,15 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField]
-    protected int health;
+    protected int health = 1;
 
     [SerializeField]
     protected GameObject EnemyBullet;
 
-    [SerializeField]
-    protected Rigidbody2D rb;
-
     protected Fire Fire;
-
-    public Monster()
-    {
-        Fire = new Fire("simple");
-        this.health = 1;
-    }
-
-    public Monster(int health, GameObject enemyBullet, string patternType)
-    {
-        Fire = new Fire(patternType);
-        this.health = health;
-        EnemyBullet = enemyBullet;
-    }
-
-    // Start is called before the first frame update
-    protected void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    protected void Update()
-    {
-
-    }
+    protected float maxPositionY;
+    protected float maxPositionX;
+    protected float speed;
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
@@ -55,6 +29,5 @@ public class Monster : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        
     }
 }

@@ -13,7 +13,7 @@ public class NewBehaviourScript : MonoBehaviour
     private GameObject Bullet;
 
     [SerializeField]
-    private GameObject Monster;
+    private GameObject Monster; 
 
     [SerializeField]
     private GameObject Monster2;
@@ -27,7 +27,6 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start");
     }
 
     private void Shoot()
@@ -35,9 +34,6 @@ public class NewBehaviourScript : MonoBehaviour
         Instantiate(Bullet, rb.position + new Vector2(0, 0.5f), Quaternion.identity);
 
         // play sound FX
-
-
-        Debug.Log("SHOT");
     }
 
     void Update()
@@ -45,16 +41,6 @@ public class NewBehaviourScript : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             Shoot();
-        }
-        if (Keyboard.current.rKey.wasPressedThisFrame)
-        {
-            Instantiate(Monster, new Vector2(2, 2), Quaternion.identity);
-            Instantiate(Monster2, new Vector2(-2, 2), Quaternion.identity);
-            Instantiate(Monster, new Vector2(-2, -2), Quaternion.identity);
-        }
-        if (Keyboard.current.gKey.wasPressedThisFrame)
-        {
-            Instantiate(Monster, new Vector2(-2, -2), Quaternion.identity);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -77,7 +63,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (Keyboard.current.wKey.isPressed)
         { // Y +
             movement = Vector2.zero;
-            Debug.Log("AVANCER");
+            // Debug.Log("AVANCER");
             movement += rb.position + new Vector2(0, speed);
             rb.MovePosition(movement);
             position = rb.position;
@@ -86,7 +72,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (Keyboard.current.aKey.isPressed)
         { // X -
             movement = Vector2.zero;
-            Debug.Log("GAUCHE");
+            // Debug.Log("GAUCHE");
             movement += rb.position + new Vector2(-speed, 0);
             rb.MovePosition(movement);
             position = rb.position;
@@ -95,7 +81,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (Keyboard.current.sKey.isPressed)
         { // Y -
             movement = Vector2.zero;
-            Debug.Log("BAS");
+            // Debug.Log("BAS");
             movement += rb.position + new Vector2(0, -speed);
             rb.MovePosition(movement);
             position = rb.position;
@@ -104,13 +90,10 @@ public class NewBehaviourScript : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
         { // X +
             movement = Vector2.zero;
-            Debug.Log("DROITE");
+            // Debug.Log("DROITE");
             movement += rb.position + new Vector2(speed, 0);
             rb.MovePosition(movement);
             position = rb.position;
         }
-
-
-        
     }
 }
