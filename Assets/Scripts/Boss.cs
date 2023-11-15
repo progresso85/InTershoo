@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Boss : MonoBehaviour
 {
     private Vector2 finalPosition = new Vector2(0, 6);
     private float cooldownTimer;
-    private int originalHealthbar;
     private int currentHealthbar;
     private int health = 100;
     private int healthBarNumber = 2;
-    private float cooldown = 5;
+    private readonly float cooldown = 5;
 
     [SerializeField]
     private HealthBar healthBar;
+
+    [SerializeField]
+    private TextInput textInput;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -25,8 +28,8 @@ public class Boss : MonoBehaviour
     void Start()
     {
         healthBar.setMaxHealth(health);
-        originalHealthbar = healthBarNumber;
         currentHealthbar = healthBarNumber;
+        textInput.SetText(currentHealthbar.ToString());
         gameObject.transform.position = new Vector2(0, 12);
         Debug.Log("Boss has spawned");
     }
@@ -50,10 +53,9 @@ public class Boss : MonoBehaviour
         }
         else if (health < 1 && healthBarNumber > 0)
         {
-            originalHealthbar = healthBarNumber;
             healthBarNumber--;
             currentHealthbar = healthBarNumber;
-
+            textInput.SetText(currentHealthbar.ToString());
             health = 100;
             healthBar.setHealth(health);
 
