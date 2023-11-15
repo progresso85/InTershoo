@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: -2161732342904268750}
   - component: {fileID: -925379220220422956}
   - component: {fileID: 5530339419241162571}
-  m_Layer: 0
+  - component: {fileID: -2823846223733700373}
+  m_Layer: 7
   m_Name: Cyclope
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,10 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247fc5c1b4059fa4d8125b4c22aac472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  EnemyBullet: {fileID: 0}
-  rb: {fileID: 0}
-  time: 0
+  health: 10
+  EnemyBullet: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
+  rb: {fileID: 5530339419241162571}
 --- !u!61 &-925379220220422956
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,6 +134,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &-2823846223733700373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647722063166099435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a845223e2b1c8743acb01d69ca28fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5530339419241162571}
+  speed: 0.03
 --- !u!1 &1300246374963527437
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5136124638530572758}
   - component: {fileID: 3514157045566526196}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7379444136776218452}
   - component: {fileID: 2374976712947005239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triangle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3511041610427579960}
   - component: {fileID: 1282871538791142828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triangle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 362105505488670731}
   - component: {fileID: 1105686136357052288}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triangle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4001287188093086542}
   - component: {fileID: 5266299977827399571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2369294552730969527}
   - component: {fileID: 6256780844853843635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4832072126235452780}
   - component: {fileID: 1891608022211208954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7166751461006147467}
   - component: {fileID: 9062049570478092699}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triangle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734290170203612703}
   - component: {fileID: 8860654393607217966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triangle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -900,7 +914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2404206342531270638}
   - component: {fileID: 3002532043586591755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,7 +998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4879469853021543087}
   - component: {fileID: 5867863136375981707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1068,7 +1082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7908236705476171629}
   - component: {fileID: 1583438077921771573}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

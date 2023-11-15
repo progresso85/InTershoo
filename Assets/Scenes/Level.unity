@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 504014690123128283, guid: 0e62f3c25aea17b4a96d5fbd443223d9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2257799151240034286, guid: 0e62f3c25aea17b4a96d5fbd443223d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -171,9 +175,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3154667073584363110, guid: 0e62f3c25aea17b4a96d5fbd443223d9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331506816584241872, guid: 0e62f3c25aea17b4a96d5fbd443223d9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874457214131840736, guid: 0e62f3c25aea17b4a96d5fbd443223d9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7920424307699144697, guid: 0e62f3c25aea17b4a96d5fbd443223d9, type: 3}
       propertyPath: m_Name
       value: Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920424307699144697, guid: 0e62f3c25aea17b4a96d5fbd443223d9, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -380,6 +400,14 @@ PrefabInstance:
       propertyPath: Monster
       value: 
       objectReference: {fileID: 4498888320731536099, guid: c6c209c7c05bcbc46a71de3e168af147, type: 3}
+    - target: {fileID: 1379878796266250289, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: Monster2
+      value: 
+      objectReference: {fileID: 647722063166099435, guid: f32f0e45bb3d7ff4bb3b4b1dbabff6e5, type: 3}
+    - target: {fileID: 1906077881829194882, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4278078156902088748, guid: 13989ecb15110364fa0237b04e758575, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5256
@@ -427,6 +455,10 @@ PrefabInstance:
     - target: {fileID: 7551534082209547162, guid: 13989ecb15110364fa0237b04e758575, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551534082209547162, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

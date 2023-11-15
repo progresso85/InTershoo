@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5143467031863490845}
   - component: {fileID: 162758604188143071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2459624646171537626}
   - component: {fileID: 9072236873527088327}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3793161894344212943}
   - component: {fileID: 6973553140210122166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7442275095432028959}
   - component: {fileID: 5258132761771842488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2614448577303464153}
   - component: {fileID: 2697189141391608137}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 4805958640855330223}
   - component: {fileID: 5188562005774091810}
   - component: {fileID: -5544998154865582076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7522227306009734299}
   - component: {fileID: 6857356777841620018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2729067930043816258}
   - component: {fileID: 2510853153021945720}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296277438601336911}
   - component: {fileID: 7445006777032087689}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6209570637786584873}
   - component: {fileID: 4675146161823283491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 262165126566528988}
   - component: {fileID: 5285479866523477587}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8298343403023705596}
   - component: {fileID: 1021833381880618592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1070,7 +1070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6272389621915292971}
   - component: {fileID: 8815045934816465338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1154,7 +1154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 568238832858724914}
   - component: {fileID: 2342266449984678226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1661665931400218525}
   - component: {fileID: 5421630163665255375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1322,7 +1322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1568194425835201015}
   - component: {fileID: 6308989149051853431}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1406,7 +1406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8899741443493553059}
   - component: {fileID: 5095532986265370850}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -16,6 +16,9 @@ public class NewBehaviourScript : MonoBehaviour
     private GameObject Monster;
 
     [SerializeField]
+    private GameObject Monster2;
+
+    [SerializeField]
     private float speed;
 
     [SerializeField]
@@ -46,7 +49,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             Instantiate(Monster, new Vector2(2, 2), Quaternion.identity);
-            Instantiate(Monster, new Vector2(-2, 2), Quaternion.identity);
+            Instantiate(Monster2, new Vector2(-2, 2), Quaternion.identity);
             Instantiate(Monster, new Vector2(-2, -2), Quaternion.identity);
         }
     }
