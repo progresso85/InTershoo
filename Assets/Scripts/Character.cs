@@ -27,14 +27,21 @@ public class NewBehaviourScript : MonoBehaviour
         Debug.Log("Start");
     }
 
+    private void Shoot()
+    {
+        Instantiate(Bullet, rb.position + new Vector2(0, 0.5f), Quaternion.identity);
+
+        // play sound FX
+
+
+        Debug.Log("SHOT");
+    }
+
     void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            Instantiate(Bullet, rb.position + new Vector2(0, 0.5f), Quaternion.identity);
-            Debug.Log("SHOT");
-            Debug.Log(rb.position);
-            Debug.Log(speed);
+            Shoot();
         }
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
