@@ -26,21 +26,11 @@ public class NewBehaviourScript : MonoBehaviour
 
     [SerializeField]
     private AudioClip DamageSoundClip;
-
-
-
     private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-    }
-
-    private void Shoot()
-    {
-        Instantiate(Bullet, rb.position + new Vector2(0, 0.5f), Quaternion.identity);
-
-        // play sound FX
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -66,7 +56,6 @@ public class NewBehaviourScript : MonoBehaviour
         // play sound FX
         audioSource.clip = DamageSoundClip;
         audioSource.Play();
-        Debug.Log("SHOT");
     }
 
     // Update is called once per frame
