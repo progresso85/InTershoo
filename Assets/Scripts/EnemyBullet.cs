@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [SerializeField]
-    int health;
-
-    [SerializeField]
-    private GameObject EnemyBullet;
+    private float speed;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -22,23 +19,15 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        rb.MovePosition(rb.position + new Vector2(0, speed));
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!(collision.collider.tag == "Player" || collision.collider.tag == "PlayerBullet"))
-        {
-
-        }
-        else
+        if (!(collision.collider.tag == "Monster" || collision.collider.tag == "EnemyBullet"))
         {
             Debug.Log("Collision");
-            health -= 1;
-            if (health == 0)
-            {
-                Destroy(this.gameObject);
-            }
+            Destroy(gameObject);
         }
-        
     }
 }
