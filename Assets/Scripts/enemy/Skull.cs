@@ -3,24 +3,18 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Skull : MonoBehaviour
+public class Skull : Monster
 {
-    private float maxPositionY = -10f;
-
     [SerializeField]
     private Rigidbody2D rb;
 
-    [SerializeField]
-    private float speed;
-
-    // Start is called before the first frame update
-    void Start()
+    Skull()
     {
-        gameObject.transform.position = new Vector2(-3, 9);
-        Debug.Log("Start position");
+        Fire = new Fire("simple");
+        maxPositionY = -10f;
+        speed = -0.03f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (gameObject.transform.position.y > maxPositionY)
@@ -32,7 +26,6 @@ public class Skull : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 }
 

@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField]
-    int health;
+    protected int health = 1;
 
     [SerializeField]
-    private GameObject EnemyBullet;
+    protected GameObject EnemyBullet;
+
+    protected Fire Fire;
+    protected float maxPositionY;
+    protected float maxPositionX;
+    protected float speed;
+    [SerializeField]
+    private AudioClip DamageSoundClip;
 
     [SerializeField]
-    private Rigidbody2D rb;
+    private AudioClip DieSoundClip;
 
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource audioSource;
+    
+    protected void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if(!(collision.collider.tag == "Player" || collision.collider.tag == "PlayerBullet"))
         {
@@ -34,11 +36,17 @@ public class Monster : MonoBehaviour
         {
             Debug.Log("Collision");
             health -= 1;
+            audioSource.clip = DamageSoundClip;
+            audioSource.Play();
+
             if (health == 0)
             {
+                audioSource.clip = DieSoundClip;
+                audioSource.Play();
+                audioSource.clip = DamageSoundClip;
+                audioSource.Play();
                 Destroy(this.gameObject);
             }
         }
-        
     }
 }
