@@ -12,7 +12,7 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField]
     private GameObject Bullet;
 
-    [SerializeField] 
+    [SerializeField]
     private GameObject Monster;
 
     [SerializeField]
@@ -50,6 +50,10 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Instantiate(Monster, new Vector2(2, 2), Quaternion.identity);
             Instantiate(Monster2, new Vector2(-2, 2), Quaternion.identity);
+            Instantiate(Monster, new Vector2(-2, -2), Quaternion.identity);
+        }
+        if (Keyboard.current.gKey.wasPressedThisFrame)
+        {
             Instantiate(Monster, new Vector2(-2, -2), Quaternion.identity);
         }
     }
