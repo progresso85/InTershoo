@@ -6,10 +6,16 @@ using UnityEngine;
 public class Fire
 {
     string pattern;
-    public Fire(string pattern)
+    GameObject projectile;
+    public Fire(GameObject projectile, string pattern)
+    {
+        this.pattern = pattern;
+        this.projectile = projectile;
+    }
+
+    public void changePattern(string pattern)
     {  this.pattern = pattern; }
        
-
     public void shoot()
     {
         switch(pattern)
@@ -32,7 +38,7 @@ public class Fire
 
     void simple()
     {
-
+        
     }
 
     void circle()

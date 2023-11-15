@@ -8,8 +8,6 @@ public class Monster : MonoBehaviour
 
     [SerializeField]
     protected GameObject EnemyBullet;
-
-    protected Fire Fire;
     protected float maxPositionY;
     protected float maxPositionX;
     protected float speed;
@@ -34,7 +32,7 @@ public class Monster : MonoBehaviour
         }
         else
         {
-            Debug.Log("Collision");
+            // Debug.Log("Collision");
             health -= 1;
             audioSource.clip = DamageSoundClip;
             audioSource.Play();

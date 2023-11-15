@@ -10,9 +10,13 @@ public class Skull : Monster
 
     Skull()
     {
-        Fire = new Fire("simple");
         maxPositionY = -10f;
         speed = -0.03f;
+    }
+
+    new private void Start()
+    {
+        Instantiate(EnemyBullet, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
     }
 
     void Update()
@@ -20,7 +24,6 @@ public class Skull : Monster
         if (gameObject.transform.position.y > maxPositionY)
         {
             rb.MovePosition(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + speed));
-            Debug.Log("Moving");
         }
         else
         {

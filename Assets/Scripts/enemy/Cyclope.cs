@@ -10,10 +10,14 @@ public class Cyclops : Monster
 
     Cyclops()
     {
-        Fire = new Fire("circle");
         maxPositionX = 6f;
         health = 10;
         speed = 0.03f;
+    }
+
+    new private void Start()
+    {
+        
     }
 
     void Update()
