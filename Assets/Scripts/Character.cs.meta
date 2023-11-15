@@ -3,7 +3,12 @@ guid: 7a3bed09c479bf040807afc38c3f9f87
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Bullet: {instanceID: 0}
+  - Monster: {instanceID: 0}
+  - Monster2: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - shotSoundClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

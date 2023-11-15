@@ -4,10 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - EnemyBullet: {instanceID: 0}
-  - rb: {instanceID: 0}
-  - DamageSoundClip: {fileID: 8300000, guid: b7e419585f520b640a3b4de215eeb8c9, type: 3}
-  - DieSoundClip: {fileID: 8300000, guid: 3f737e7d649bf5f4592eb68708374bb5, type: 3}
+  - EnemyBullet: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
+  - dieSoundAudio: {instanceID: 0}
+  - damageSoundAudio: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -25,13 +25,14 @@ public class NewBehaviourScript : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField]
-    private AudioClip DamageSoundClip;
-    private AudioSource audioSource;
+    private AudioClip shotSoundClip;
+
+    [SerializeField]
+    private float volume = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -52,10 +53,7 @@ public class NewBehaviourScript : MonoBehaviour
     private void Shoot()
     {
         Instantiate(Bullet, rb.position + new Vector2(0, 0.5f), Quaternion.identity);
-
-        // play sound FX
-        audioSource.clip = DamageSoundClip;
-        audioSource.Play();
+        AudioSource.PlayClipAtPoint(shotSoundClip, transform.position, volume);
     }
 
     // Update is called once per frame
