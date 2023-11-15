@@ -3,7 +3,11 @@ guid: 247fc5c1b4059fa4d8125b4c22aac472
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - EnemyBullet: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - DamageSoundClip: {fileID: 8300000, guid: b7e419585f520b640a3b4de215eeb8c9, type: 3}
+  - DieSoundClip: {fileID: 8300000, guid: 3f737e7d649bf5f4592eb68708374bb5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

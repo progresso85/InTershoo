@@ -13,6 +13,14 @@ public class Monster : MonoBehaviour
     [SerializeField]
     protected Rigidbody2D rb;
 
+    [SerializeField]
+    private AudioClip DamageSoundClip;
+
+    [SerializeField]
+    private AudioClip DieSoundClip;
+
+    private AudioSource audioSource;
+
     protected Fire Fire;
 
     public Monster()
@@ -31,7 +39,7 @@ public class Monster : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -50,8 +58,15 @@ public class Monster : MonoBehaviour
         {
             Debug.Log("Collision");
             health -= 1;
+            audioSource.clip = DamageSoundClip;
+            audioSource.Play();
+
             if (health == 0)
             {
+                audioSource.clip = DieSoundClip;
+                audioSource.Play();
+                audioSource.clip = DamageSoundClip;
+                audioSource.Play();
                 Destroy(this.gameObject);
             }
         }

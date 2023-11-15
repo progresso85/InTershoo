@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2757034554109255000}
   - component: {fileID: 5786068755079248811}
   - component: {fileID: -2823846223733700373}
+  - component: {fileID: -2161732342904268750}
   m_Layer: 7
   m_Name: Cyclope
   m_TagString: Monster
@@ -48,21 +49,6 @@ Transform:
   - {fileID: 7379444136776218452}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2161732342904268750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647722063166099435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247fc5c1b4059fa4d8125b4c22aac472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  EnemyBullet: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
-  rb: {fileID: 5530339419241162571}
 --- !u!61 &-925379220220422956
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,8 +150,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   EnemyBullet: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
-  rb: {fileID: 0}
+  rb: {fileID: 5530339419241162571}
+  DamageSoundClip: {fileID: 8300000, guid: 6036d630a06b64646a9b5283d2e1ca22, type: 3}
+  DieSoundClip: {fileID: 8300000, guid: 3f737e7d649bf5f4592eb68708374bb5, type: 3}
 --- !u!114 &-2823846223733700373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647722063166099435}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a845223e2b1c8743acb01d69ca28fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5530339419241162571}
+  speed: 0.03
+--- !u!114 &-2161732342904268750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,11 +176,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 647722063166099435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a845223e2b1c8743acb01d69ca28fae, type: 3}
+  m_Script: {fileID: 11500000, guid: 247fc5c1b4059fa4d8125b4c22aac472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
+  EnemyBullet: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
   rb: {fileID: 5530339419241162571}
-  speed: 0.03
+  DamageSoundClip: {fileID: 8300000, guid: 6036d630a06b64646a9b5283d2e1ca22, type: 3}
+  DieSoundClip: {fileID: 8300000, guid: 3f737e7d649bf5f4592eb68708374bb5, type: 3}
 --- !u!1 &1300246374963527437
 GameObject:
   m_ObjectHideFlags: 0
