@@ -2471,7 +2471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9302aafc23597143bfc061999c5a0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyBullet: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
+  weapon: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
   dieSoundAudio: {fileID: 8300000, guid: 3f737e7d649bf5f4592eb68708374bb5, type: 3}
   damageSoundAudio: {fileID: 8300000, guid: b7e419585f520b640a3b4de215eeb8c9, type: 3}
   rb: {fileID: -6270180901971572944}

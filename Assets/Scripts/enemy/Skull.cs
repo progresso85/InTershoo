@@ -33,7 +33,6 @@ public class Skull : Monster
 
     void shoot()
     {
-        Instantiate(SimpleProjectile, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+        Instantiate(weapon, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
     }
 }
-
