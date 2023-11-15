@@ -9,8 +9,11 @@ public class Boss : MonoBehaviour
     private int originalHealthbar;
     private int currentHealthbar;
     private int health = 100;
-    private int healthBar = 1;
+    private int healthBarNumber = 2;
     private float cooldown = 5;
+
+    [SerializeField]
+    private HealthBar healthBar;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -21,8 +24,9 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        originalHealthbar = healthBar;
-        currentHealthbar = healthBar;
+        healthBar.setMaxHealth(health);
+        originalHealthbar = healthBarNumber;
+        currentHealthbar = healthBarNumber;
         gameObject.transform.position = new Vector2(0, 12);
         Debug.Log("Boss has spawned");
     }
@@ -33,7 +37,6 @@ public class Boss : MonoBehaviour
         if (gameObject.transform.position.y > 6)
         {
             rb.MovePosition(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.1f));
-            Debug.Log(gameObject.transform.position.y);
         }
         Shoot();
     }
@@ -43,15 +46,18 @@ public class Boss : MonoBehaviour
         if (health > 0)
         {
             health--;
-            Debug.Log("Boss have " + health + "health now");
+            healthBar.setHealth(health);
         }
-        else if (health == 0 && healthBar > 0)
+        else if (health < 1 && healthBarNumber > 0)
         {
-            originalHealthbar = healthBar;
-            healthBar -= 1;
-            currentHealthbar = healthBar;
+            originalHealthbar = healthBarNumber;
+            healthBarNumber--;
+            currentHealthbar = healthBarNumber;
+
             health = 100;
-            Debug.Log("Boss lost a healthbar and now have " + healthBar + "healthbar");
+            healthBar.setHealth(health);
+
+            Debug.Log("Boss lost a healthbar and now have " + currentHealthbar + "healthbar");
         }
         else
         {
