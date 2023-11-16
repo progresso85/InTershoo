@@ -14,12 +14,6 @@ public class NewBehaviourScript : MonoBehaviour
     private GameObject Bullet;
 
     [SerializeField]
-    private GameObject Monster; 
-
-    [SerializeField]
-    private GameObject Monster2;
-
-    [SerializeField]
     private float speed;
 
     [SerializeField]
@@ -32,27 +26,41 @@ public class NewBehaviourScript : MonoBehaviour
     private float volume = 1f;
 
     // number of shot/second
-    public float attackSpeed;
+    [SerializeField]
+    private float shotsPerMinute;
     private float nextAttackTime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
         movement = Vector2.zero;
-        attackSpeed = 5f;
     }
 
     void Update()
     {
-        if (Keyboard.current.spaceKey.isPressed)
-        {
             nextAttackTime -= Time.deltaTime;
             if( nextAttackTime <= 0)
             {
-                Shoot();
-                nextAttackTime = (1/attackSpeed);
+                if (Keyboard.current.spaceKey.isPressed)
+                {
+                    Shoot();
+                }
+
+                GameObject boss = GameObject.Find("Boss");
+
+                if(boss != null)
+                {
+                //  float distanceToTheBoss = boss.transform;
+                //  float angleProjectileLeft = Mathf.Sin(()/());
+                    
+                    Instantiate(Bullet, rb.position + new Vector2(-0.5f, 0f), Quaternion.Euler(0f, 0f, 0f));
+                    Instantiate(Bullet, rb.position + new Vector2(0.5f, 0f), Quaternion.Euler(0f, 0f, 0f));
+                }
+                
+                nextAttackTime = (1/shotsPerMinute);
+
             }
-        }
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -63,7 +71,10 @@ public class NewBehaviourScript : MonoBehaviour
     }
     private void Shoot()
     {
-        Instantiate(Bullet, rb.position + new Vector2(0, 0.5f), Quaternion.identity);
+        for(int i = -10; i <= 10; i += 10)
+        {
+            Instantiate(Bullet, rb.position + new Vector2(0, 0.5f), Quaternion.Euler(0f, 0f, i));
+        }
         AudioSource.PlayClipAtPoint(shotSoundClip, transform.position, volume);
     }
 
@@ -71,15 +82,13 @@ public class NewBehaviourScript : MonoBehaviour
     void FixedUpdate()
     {
         
-        // sneak to reduce speed 
-        // normalise vector in the futur (IMPORTANT)
+        // sneak to reduce speed
 
         // do a listener on the key W, on press "input System V2"
 
         if (Keyboard.current.wKey.isPressed)
         { // Y +
             movement.y += speed;
-            rb.MovePosition(movement);
             position = rb.position;
         }
 
@@ -92,21 +101,29 @@ public class NewBehaviourScript : MonoBehaviour
         if (Keyboard.current.sKey.isPressed)
         { // Y -
             movement.y -= speed;
-            rb.MovePosition(movement);
             position = rb.position;
         }
 
         if (Keyboard.current.dKey.isPressed)
         { // X +
             movement.x += speed;
-            rb.MovePosition(movement);
             position = rb.position;
         }
+
         movement.Normalize();
-        movement = movement * speed;
+        if(Keyboard.current.shiftKey.isPressed)
+        {
+            movement *= speed / 2;
+        }
+        else
+        {
+            movement *= speed;
+        }
+
         if (movement != null || movement != Vector2.zero) {
             rb.MovePosition(rb.position + movement);
         }
         movement = Vector2.zero;
+
     }
 }

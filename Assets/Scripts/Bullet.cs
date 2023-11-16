@@ -19,7 +19,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.MovePosition(rb.position + new Vector2(0, speed));
+        rb.MovePosition(rb.position + new Vector2(
+            (0 * Mathf.Cos(Mathf.Deg2Rad * this.transform.rotation.eulerAngles.z) - speed * Mathf.Sin(Mathf.Deg2Rad * this.transform.rotation.eulerAngles.z)),
+            (0 * Mathf.Sin(Mathf.Deg2Rad * this.transform.rotation.eulerAngles.z) + speed * Mathf.Cos(Mathf.Deg2Rad * this.transform.rotation.eulerAngles.z))
+        ));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

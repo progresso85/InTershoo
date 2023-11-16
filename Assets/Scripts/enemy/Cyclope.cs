@@ -34,7 +34,7 @@ public class Cyclops : Monster
             Destroy(gameObject);
         }
 
-        if((timerBuffer = timerBuffer - (int)(Time.deltaTime * 1000)) <= 0)
+        if((timerBuffer -= (int)(Time.deltaTime * 1000)) <= 0)
         {
             shoot();
             timerBuffer = timer;
