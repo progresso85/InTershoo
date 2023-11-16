@@ -10,7 +10,7 @@ public class Boss : MonoBehaviour
     private int currentHealthbar;
     private int health = 100;
     private int healthBarNumber = 2;
-    private readonly float cooldown = 5;
+    private readonly float cooldown = 1;
 
     private float teleportationTimer = 1;
     private Vector2 Original_coords;
@@ -40,6 +40,8 @@ public class Boss : MonoBehaviour
         textInput.SetText(currentHealthbar.ToString());
         gameObject.transform.position = new Vector2(0, 6);
         actualBossPointNumber = 0;
+
+        // patern =
         list_of_coords = new List<Vector2> { Original_coords, new Vector2(0, -2), Original_coords, new Vector2(4,2), new(6,-2)};
     }
 
