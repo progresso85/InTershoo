@@ -233,6 +233,10 @@ MonoBehaviour:
   speed: 0.15
   rb: {fileID: 8435393460968737542}
   shotSoundClip: {fileID: 8300000, guid: 05b6345addce72b4cbc2d3624a2faced, type: 3}
+  deathSoundClip: {fileID: 8300000, guid: d6aab11232f51104babf947cda22e151, type: 3}
+  stageBGM: {fileID: 8300000, guid: a9fb86b106016a848ba6349ef6b27ed6, type: 3}
+  music: 1
+  godMod: 0
   volume: 0.5
   shotsPerMinute: 10
 --- !u!50 &8435393460968737542

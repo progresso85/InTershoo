@@ -125,7 +125,7 @@ public class Boss : MonoBehaviour
 
         if (burstCountBuffer < burstCount)
         {
-            if ((burstCooldownBuffer = burstCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
+            if ((burstCooldownBuffer -= (int)(Time.deltaTime * 1000)) <= 0)
             {
                 burstCountBuffer++;
                 burstCooldownBuffer = burstCooldown;
@@ -152,7 +152,7 @@ public class Boss : MonoBehaviour
 
         if (burstCountBuffer < burstCount)
         {
-            if ((burstCooldownBuffer = burstCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
+            if ((burstCooldownBuffer -= (int)(Time.deltaTime * 1000)) <= 0)
             {
                 burstCountBuffer++;
                 int angle = burstCountBuffer * 10;
@@ -188,7 +188,7 @@ public class Boss : MonoBehaviour
 
         if (burstCountBuffer < burstCount)
         {
-            if ((burstCooldownBuffer = burstCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
+            if ((burstCooldownBuffer -= (int)(Time.deltaTime * 1000)) <= 0)
             {
                 burstCountBuffer++;
                 burstCooldownBuffer = burstCooldown;
