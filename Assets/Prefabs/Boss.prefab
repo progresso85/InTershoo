@@ -100,8 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
+  textInput: {fileID: 0}
   rb: {fileID: 6615413679289730552}
-  enemyBullet: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
+  weapon: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
 --- !u!50 &6615413679289730552
 Rigidbody2D:
   serializedVersion: 4
