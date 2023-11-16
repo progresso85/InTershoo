@@ -75,9 +75,9 @@ public class Boss : MonoBehaviour
 
         if((reloadCooldownBuffer = reloadCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
         {
+            // reloadCooldownBuffer will be reset in shoot when the burst is finish
             if(currentHealthbar == 2)
             {
-                // reloadCooldownBuffer will be reset in shoot when the burst is finish
                 ShootPattern1();
             }
             if(currentHealthbar == 1)
@@ -120,7 +120,6 @@ public class Boss : MonoBehaviour
             if ((burstCooldownBuffer = burstCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
             {
                 burstCountBuffer++;
-                Debug.Log("Fire burst " + burstCountBuffer);
                 burstCooldownBuffer = burstCooldown;
                 // the value of i the diffence of angle between then
                 for(int i = -20; i <= 20; i += 20)
@@ -131,7 +130,6 @@ public class Boss : MonoBehaviour
         }
         else
         {
-            Debug.Log("Reloading");
             reloadCooldownBuffer = reloadCooldown;
             burstCountBuffer = 0;
             burstCooldownBuffer = 0;
