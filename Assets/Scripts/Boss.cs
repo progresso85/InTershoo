@@ -75,9 +75,9 @@ public class Boss : MonoBehaviour
 
         if((reloadCooldownBuffer = reloadCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
         {
+            // reloadCooldownBuffer will be reset in shoot when the burst is finish
             if(currentHealthbar == 2)
             {
-                // reloadCooldownBuffer will be reset in shoot when the burst is finish
                 ShootPattern1();
             }
             if(currentHealthbar == 1)
