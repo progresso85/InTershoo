@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - PlayerBullet
   - EnemyBullet
+  - Healthbar
   layers:
   - Default
   - TransparentFX

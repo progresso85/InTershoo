@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
     {
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            SpawnCyclops(0, 0);
+            SpawnCyclops(-5, 5);
         }
         if (Keyboard.current.tKey.wasPressedThisFrame)
         {

@@ -5,9 +5,11 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     protected int health = 1;
+    protected int timerBuffer;
+    protected int timer = 750;
 
     [SerializeField]
-    protected GameObject EnemyBullet;
+    protected GameObject weapon;
 
     [SerializeField]
     private AudioClip dieSoundAudio;
@@ -37,7 +39,6 @@ public class Monster : MonoBehaviour
             // Debug.Log("Collision");
             AudioSource.PlayClipAtPoint(damageSoundAudio, transform.position, volume);
             health -= 1;
-
 
             if (health == 0)
             {
