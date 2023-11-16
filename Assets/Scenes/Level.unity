@@ -1106,6 +1106,10 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 7220378052376628360, guid: f7127a1b767217f4b96138e948fb1f49, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
+    - target: {fileID: 7220378052376628360, guid: f7127a1b767217f4b96138e948fb1f49, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 705548911}

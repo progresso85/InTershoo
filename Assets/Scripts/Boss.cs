@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Boss : MonoBehaviour
 {
     private Vector2 finalPosition = new Vector2(0, 6);
-    private float cooldownTimer;
     private int currentHealthbar;
     private int health = 100;
     private int healthBarNumber = 2;
-    private readonly float cooldown = 1;
+
+    private int burstCount = 4; // number of "wave" the boss will fire
+    private int burstCooldown = 100; // time between each fire of the burst
+    private int reloadCooldown = 2000; // time to reload and fire an another burst
+    // buffer memory
+    private int burstCountBuffer = 0;
+    private int burstCooldownBuffer = 0;
+    private int reloadCooldownBuffer = 0;
 
     private float teleportationTimer = 1;
     private Vector2 Original_coords;
@@ -28,7 +35,7 @@ public class Boss : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField]
-    private GameObject enemyBullet;
+    private GameObject weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -64,9 +71,24 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            
-        Shoot();
         teleportationPatern2();
+
+        if((reloadCooldownBuffer = reloadCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
+        {
+            if(currentHealthbar == 2)
+            {
+                // reloadCooldownBuffer will be reset in shoot when the burst is finish
+                ShootPattern1();
+            }
+            if(currentHealthbar == 1)
+            {
+                ShootPattern1();
+            }
+            if(currentHealthbar == 0)
+            {
+                ShootPattern1 ();
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -91,39 +113,31 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void ShootPattern1()
     {
-        cooldownTimer -= Time.deltaTime;
-
-        if (cooldownTimer > 0) return;
-
-        cooldownTimer = cooldown;
-
-        Instantiate(enemyBullet, gameObject.transform.position, Quaternion.identity);
-
-
-    }
-    void teleportationPatern1()
-        {       
-
-        // where am i ?
-        Vector2 currentPos = gameObject.transform.position;
-
-        if ((currentPos == Original_coords) || (currentPos == Original_coords + new Vector2(2, -2)))
-        {   
-            finalPosition = Original_coords + new Vector2(2, 2);
-        }else if (currentPos == Original_coords + new Vector2(2, 2))
+        if(burstCountBuffer < burstCount)
         {
-            finalPosition = Original_coords + new Vector2(-2, 2);
-        }else if (currentPos == Original_coords + new Vector2(-2, 2))
-        {
-            finalPosition = Original_coords + new Vector2(-2, -2);
-        }else if (currentPos == Original_coords + new Vector2(-2, -2))
-        {
-            finalPosition = Original_coords + new Vector2(2, -2);
+            if ((burstCooldownBuffer = burstCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
+            {
+                burstCountBuffer++;
+                Debug.Log("Fire burst " + burstCountBuffer);
+                burstCooldownBuffer = burstCooldown;
+                // the value of i the diffence of angle between then
+                for(int i = -20; i <= 20; i += 20)
+                {
+                    Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i));
+                }
+            }
         }
-        teleportToCoords(finalPosition);
+        else
+        {
+            Debug.Log("Reloading");
+            reloadCooldownBuffer = reloadCooldown;
+            burstCountBuffer = 0;
+            burstCooldownBuffer = 0;
+        }
     }
+
     void teleportationPatern2()
     {
         teleportationTimer -= Time.deltaTime;
