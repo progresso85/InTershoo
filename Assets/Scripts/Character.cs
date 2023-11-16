@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,23 +31,33 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField]
     private float volume = 1f;
 
+    // number of shot/second
+    public float attackSpeed;
+    private float nextAttackTime = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
+        movement = Vector2.zero;
+        attackSpeed = 5f;
     }
 
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.spaceKey.isPressed)
         {
-            Shoot();
+            nextAttackTime -= Time.deltaTime;
+            if( nextAttackTime <= 0)
+            {
+                Shoot();
+                nextAttackTime = (1/attackSpeed);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!(collision.collider.tag == "Wall" || collision.collider.tag == "PlayerBullet"))
         {
-            // Debug.Log(collision.collider.tag);
             Destroy(gameObject);
         }
     }
@@ -67,38 +78,35 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (Keyboard.current.wKey.isPressed)
         { // Y +
-            movement = Vector2.zero;
-            // Debug.Log("AVANCER");
-            movement += rb.position + new Vector2(0, speed);
+            movement.y += speed;
             rb.MovePosition(movement);
             position = rb.position;
         }
 
         if (Keyboard.current.aKey.isPressed)
         { // X -
-            movement = Vector2.zero;
-            // Debug.Log("GAUCHE");
-            movement += rb.position + new Vector2(-speed, 0);
-            rb.MovePosition(movement);
+            movement.x -= speed;
             position = rb.position;
         }
 
         if (Keyboard.current.sKey.isPressed)
         { // Y -
-            movement = Vector2.zero;
-            // Debug.Log("BAS");
-            movement += rb.position + new Vector2(0, -speed);
+            movement.y -= speed;
             rb.MovePosition(movement);
             position = rb.position;
         }
 
         if (Keyboard.current.dKey.isPressed)
         { // X +
-            movement = Vector2.zero;
-            // Debug.Log("DROITE");
-            movement += rb.position + new Vector2(speed, 0);
+            movement.x += speed;
             rb.MovePosition(movement);
             position = rb.position;
         }
+        movement.Normalize();
+        movement = movement * speed;
+        if (movement != null || movement != Vector2.zero) {
+            rb.MovePosition(rb.position + movement);
+        }
+        movement = Vector2.zero;
     }
 }
