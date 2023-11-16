@@ -19,7 +19,16 @@ public class NewBehaviourScript : MonoBehaviour
     private AudioClip shotSoundClip;
 
     [SerializeField]
-    private bool invicible;
+    private AudioClip deathSoundClip;
+
+    [SerializeField]
+    private AudioClip stageBGM;
+
+    [SerializeField]
+    private bool music;
+
+    [SerializeField]
+    private bool godMod;
 
     [SerializeField]
     private float volume = 1f;
@@ -33,6 +42,8 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
         movement = Vector2.zero;
+        if(music)
+            AudioSource.PlayClipAtPoint(stageBGM, transform.position, volume);
     }
 
     void Update()
@@ -52,23 +63,26 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (!(collision.collider.tag == "Wall" || collision.collider.tag == "PlayerBullet"))
         {
-            if(!invicible)
-            Destroy(gameObject);
+            if(!godMod)
+            {
+                AudioSource.PlayClipAtPoint(deathSoundClip, transform.position, volume);
+                Destroy(gameObject);
+            }
         }
     }
 
     private void ShootAutoAim()
     {
         // Il faudra globalise ça pour l'ennemi le plus proche
-        GameObject boss = GameObject.Find("Boss");
+        GameObject ennemy = GameObject.Find("Boss");
 
-        if (boss != null)
+        if (ennemy != null)
         {
-            // sqrt( (x2 - x1 )² + (...)² )
-            float distanceToTheBoss = Mathf.Sqrt(Mathf.Pow(boss.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(boss.transform.position.y - gameObject.transform.position.y, 2));
-            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(boss.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(boss.transform.position.y - boss.transform.position.y, 2));
+            // sqrt( (x2 - x1 )² + (y2 - y1)² )
+            float distanceToTheBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(ennemy.transform.position.y - gameObject.transform.position.y, 2));
+            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) /* Ce truc est égale à zéro, on s'en fou + Mathf.Pow(ennemy.transform.position.y - ennemy.transform.position.y, 2) */);
 
-            if(gameObject.transform.position.y > boss.transform.position.y)
+            if(gameObject.transform.position.y > ennemy.transform.position.y)
             {
                 horizontalBoss *= -1;
             }
@@ -79,11 +93,11 @@ public class NewBehaviourScript : MonoBehaviour
             Debug.Log("Distance H : " + horizontalBoss);
             Debug.Log("Angle : " + angleProjectile);
 
-            if (gameObject.transform.position.x < boss.transform.position.x)
+            if (gameObject.transform.position.x < ennemy.transform.position.x)
             {
                 angleProjectile *= -1;
             }
-            if (gameObject.transform.position.y > boss.transform.position.y)
+            if (gameObject.transform.position.y > ennemy.transform.position.y)
             {
                 angleProjectile += 180;
             }
