@@ -88,11 +88,6 @@ public class NewBehaviourScript : MonoBehaviour
             }
 
             float angleProjectile = Mathf.Rad2Deg * Mathf.Asin(horizontalBoss/distanceToTheBoss);
-
-            Debug.Log("Distance : " + distanceToTheBoss);
-            Debug.Log("Distance H : " + horizontalBoss);
-            Debug.Log("Angle : " + angleProjectile);
-
             if (gameObject.transform.position.x < ennemy.transform.position.x)
             {
                 angleProjectile *= -1;

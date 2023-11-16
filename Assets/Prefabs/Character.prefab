@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3345919595339726181}
   - component: {fileID: 1379878796266250289}
   - component: {fileID: 8435393460968737542}
+  - component: {fileID: 6725443195717159794}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -266,3 +267,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6725443195717159794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551534082209547162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767bc6e624e38cf4d9d73d2e120c3b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnScoreChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
