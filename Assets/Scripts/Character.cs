@@ -66,7 +66,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (!(collision.collider.tag == "Wall" || collision.collider.tag == "PlayerBullet"))
         {
-            // Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
     private void Shoot()

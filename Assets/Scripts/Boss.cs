@@ -86,11 +86,11 @@ public class Boss : MonoBehaviour
             }
             if(currentHealthbar == 1)
             {
-                ShootPatternCircle();
+                ShootPatternWave();
             }
             if(currentHealthbar == 0)
             {
-                ShootPatternWave();
+                ShootPatternCircle();
             }
         }
     }
