@@ -42,7 +42,23 @@ public class Boss : MonoBehaviour
         actualBossPointNumber = 0;
 
         // patern =
-        list_of_coords = new List<Vector2> { Original_coords, new Vector2(0, -2), Original_coords, new Vector2(4,2), new(6,-2)};
+        list_of_coords = new List<Vector2> { 
+            Original_coords,
+            new Vector2(0, -2),
+            Original_coords,
+            new Vector2(4,2),
+            Original_coords,
+            new Vector2(-3,6),
+            Original_coords,
+            new Vector2(0,6),
+            Original_coords,
+            new Vector2(0,0),
+            Original_coords,
+            new Vector2(0,6),
+            Original_coords,
+            new Vector2(-4,6),
+            new Vector2(4,6),
+        };
     }
 
     // Update is called once per frame
@@ -67,8 +83,6 @@ public class Boss : MonoBehaviour
             textInput.SetText(currentHealthbar.ToString());
             health = 100;
             healthBar.setHealth(health);
-
-            Debug.Log("Boss lost a healthbar and now have " + currentHealthbar + "healthbar");
         }
         else
         {
@@ -112,7 +126,6 @@ public class Boss : MonoBehaviour
     }
     void teleportationPatern2()
     {
-        
         teleportationTimer -= Time.deltaTime;
         if (teleportationTimer < 0)
         {
@@ -125,7 +138,6 @@ public class Boss : MonoBehaviour
                 // if need to go left or right
                 if ((aimed_position.x - currentPos.x) < 0.05f)
                 {   
-                    Debug.Log(aimed_position.x);
                     teleportToCoords(currentPos + new Vector2(-0.1f, 0));
                 }
                 else
@@ -149,12 +161,10 @@ public class Boss : MonoBehaviour
             // he is at the right position
             else
             { // go to the next point
-                Debug.Log("Boss is at the right position");
                 actualBossPointNumber++;
             }
             if (actualBossPointNumber > (list_of_coords.Count - 1))
             {
-                Debug.Log("End of the list");
                 // go back to the first point
                 actualBossPointNumber = 0;
             }
