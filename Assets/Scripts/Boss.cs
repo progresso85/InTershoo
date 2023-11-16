@@ -39,8 +39,6 @@ public class Boss : MonoBehaviour
         currentHealthbar = healthBarNumber;
         textInput.SetText(currentHealthbar.ToString());
         gameObject.transform.position = new Vector2(0, 6);
-        Debug.Log("Boss has spawned");
-        Debug.Log("Boss coords are " + Original_coords);
         actualBossPointNumber = 0;
         list_of_coords = new List<Vector2> { Original_coords, new Vector2(0, -2), Original_coords, new Vector2(4,2), new(6,-2)};
     }
@@ -119,12 +117,6 @@ public class Boss : MonoBehaviour
             var aimed_position = list_of_coords[actualBossPointNumber];
             Vector2 currentPos = gameObject.transform.position;
             // if not at the right position
-            Debug.Log("Aimedpoint is " + actualBossPointNumber);
-            Debug.Log("Boss is at " + currentPos);
-            Debug.Log("Aimed position is " + aimed_position);
-            Debug.Log("Distance in x is " + Mathf.Abs(currentPos.x - aimed_position.x));
-
-
             //if too far from the aimed position x
             if (Mathf.Abs(currentPos.x - aimed_position.x) > 0.05f)
             {
