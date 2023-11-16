@@ -103,6 +103,9 @@ MonoBehaviour:
   textInput: {fileID: 0}
   rb: {fileID: 6615413679289730552}
   weapon: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
+  bossHitPointsValue: 1
+  bossRemoveABarPointsValue: 10
+  bossKillPointsValue: 100
 --- !u!50 &6615413679289730552
 Rigidbody2D:
   serializedVersion: 4

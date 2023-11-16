@@ -9,6 +9,7 @@ public class Boss : MonoBehaviour
 {
     private Vector2 finalPosition = new Vector2(0, 6);
     private int currentHealthbar;
+    [SerializeField]
     private int health = 500;
     private int currentHealth = 500;
     private int healthBarNumber = 2;
@@ -29,6 +30,8 @@ public class Boss : MonoBehaviour
 
     private int actualBossPointNumber;
 
+    private ScoreController scoreController;
+
     [SerializeField]
     private HealthBar healthBar;
 
@@ -40,6 +43,16 @@ public class Boss : MonoBehaviour
 
     [SerializeField]
     private GameObject weapon;
+
+    [SerializeField]
+    private int bossHitPointsValue;
+
+    [SerializeField]
+    private int bossRemoveABarPointsValue;
+
+    [SerializeField]
+    private int bossKillPointsValue;
+
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +110,8 @@ public class Boss : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        AllocateHitBossScore();
+        Debug.Log(scoreController.GetScore());
         if (currentHealth > 0)
         {
             currentHealth--;
@@ -104,6 +119,8 @@ public class Boss : MonoBehaviour
         }
         else if (currentHealth < 1 && healthBarNumber > 0)
         {
+            AllocateRemoveABarBossScore();
+            Debug.Log(scoreController.GetScore());
             healthBarNumber--;
             currentHealthbar = healthBarNumber;
             textInput.SetText(currentHealthbar.ToString());
@@ -112,11 +129,13 @@ public class Boss : MonoBehaviour
         }
         else
         {
+            AllocateRemoveABarBossScore();
+            AllocateKillBossScore();
+            Debug.Log(scoreController.GetScore());
             Destroy(gameObject);
             Debug.Log("You killed Boss");
         }
     }
-
     void ShootPatternTreeShot()
     {
         burstCount = 4;
@@ -142,8 +161,7 @@ public class Boss : MonoBehaviour
             burstCountBuffer = 0;
             burstCooldownBuffer = 0;
         }
-    }
-    
+    } 
     void ShootPatternWave()
     {
         burstCount = 10;
@@ -172,7 +190,6 @@ public class Boss : MonoBehaviour
             burstCooldownBuffer = 0;
         }
     }
-
     void ShootPatternCircle()
     {
         actualBossPointNumber = 0;
@@ -207,8 +224,6 @@ public class Boss : MonoBehaviour
             burstCooldownBuffer = 0;
         }
     }
-
-
     void teleportationPatern2()
     {
         teleportationTimer -= Time.deltaTime;
@@ -257,19 +272,30 @@ public class Boss : MonoBehaviour
         }
     }
 
-
-
-
-    // teleporter to (x,y) coords
-    // wait for 5 seconds => timer1
-    // teleport back to original position
-    // wait for 5 seconds => timer2
-    // repeat
-
     void teleportToCoords(Vector2 coords)
     {
             // teleportation !!!
             gameObject.transform.position = coords;
             teleportationTimer = 0.01f;
+    }
+
+    private void Awake()
+    {
+        // works only if there is only one score (one player game)
+        scoreController = FindObjectOfType<ScoreController>();
+    }
+
+    // three methods to allocate score to the player when he hit the boss or remove a bar of health or kill him.
+    public void AllocateHitBossScore()
+    {
+        scoreController.AddScore(bossHitPointsValue);
+    }
+    public void AllocateRemoveABarBossScore()
+    {
+        scoreController.AddScore(bossRemoveABarPointsValue);
+    }
+    public void AllocateKillBossScore()
+    {
+        scoreController.AddScore(bossKillPointsValue);
     }
 }
