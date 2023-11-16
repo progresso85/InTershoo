@@ -58,7 +58,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {   
+    {
         
         // sneak to reduce speed 
         // normalise vector in the futur (IMPORTANT)
