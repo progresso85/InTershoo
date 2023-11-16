@@ -59,7 +59,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (!(collision.collider.tag == "Wall" || collision.collider.tag == "PlayerBullet"))
         {
-            Debug.Log(collision.collider.tag);
+            // Debug.Log(collision.collider.tag);
             Destroy(gameObject);
         }
     }
