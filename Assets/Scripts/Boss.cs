@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,7 +9,8 @@ public class Boss : MonoBehaviour
 {
     private Vector2 finalPosition = new Vector2(0, 6);
     private int currentHealthbar;
-    private int health = 10;
+    private int health = 500;
+    private int currentHealth = 500;
     private int healthBarNumber = 2;
 
     private int burstCount; // number of "wave" the boss will fire
@@ -80,33 +82,33 @@ public class Boss : MonoBehaviour
             // reloadCooldownBuffer will be reset in shoot when the burst is finish
             if(currentHealthbar == 2)
             {
-                ShootPattern1();
+                ShootPatternTreeShot();
             }
             if(currentHealthbar == 1)
             {
-                ShootPattern2();
+                ShootPatternCircle();
             }
             if(currentHealthbar == 0)
             {
-                ShootPattern3();
+                ShootPatternWave();
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (health > 0)
+        if (currentHealth > 0)
         {
-            health--;
-            healthBar.setHealth(health);
+            currentHealth--;
+            healthBar.setHealth(currentHealth);
         }
-        else if (health < 1 && healthBarNumber > 0)
+        else if (currentHealth < 1 && healthBarNumber > 0)
         {
             healthBarNumber--;
             currentHealthbar = healthBarNumber;
             textInput.SetText(currentHealthbar.ToString());
-            health = 100;
-            healthBar.setHealth(health);
+            currentHealth = health;
+            healthBar.setHealth(currentHealth);
         }
         else
         {
@@ -115,7 +117,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void ShootPattern1()
+    void ShootPatternTreeShot()
     {
         burstCount = 4;
         burstCooldown = 100;
@@ -142,7 +144,7 @@ public class Boss : MonoBehaviour
         }
     }
     
-    void ShootPattern2()
+    void ShootPatternWave()
     {
         burstCount = 10;
         burstCooldown = 100;
@@ -171,7 +173,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void ShootPattern3()
+    void ShootPatternCircle()
     {
         actualBossPointNumber = 0;
         list_of_coords = new List<Vector2>

@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6108858501477927073}
   - component: {fileID: 3345919595339726181}
   - component: {fileID: 1379878796266250289}
+  - component: {fileID: 8435393460968737542}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -229,9 +230,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 2860045187547891579, guid: d8941c28e8ee3b64188f33d39b5ceccd, type: 3}
-  Monster: {fileID: 0}
-  Monster2: {fileID: 0}
-  speed: 0.08
-  rb: {fileID: 0}
+  speed: 0.15
+  rb: {fileID: 8435393460968737542}
   shotSoundClip: {fileID: 8300000, guid: 05b6345addce72b4cbc2d3624a2faced, type: 3}
   volume: 0.5
+  shotsPerMinute: 10
+--- !u!50 &8435393460968737542
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551534082209547162}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
