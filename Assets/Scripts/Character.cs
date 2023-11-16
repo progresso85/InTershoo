@@ -47,7 +47,6 @@ public class NewBehaviourScript : MonoBehaviour
         if (Keyboard.current.spaceKey.isPressed)
         {
             nextAttackTime -= Time.deltaTime;
-            Debug.Log(nextAttackTime);
             if( nextAttackTime <= 0)
             {
                 Shoot();
@@ -59,7 +58,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (!(collision.collider.tag == "Wall" || collision.collider.tag == "PlayerBullet"))
         {
-            // Debug.Log(collision.collider.tag);
             Destroy(gameObject);
         }
     }
@@ -80,8 +78,6 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (Keyboard.current.wKey.isPressed)
         { // Y +
-            
-            // Debug.Log("AVANCER");
             movement.y += speed;
             rb.MovePosition(movement);
             position = rb.position;
@@ -89,14 +85,12 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (Keyboard.current.aKey.isPressed)
         { // X -
-            // Debug.Log("GAUCHE");
             movement.x -= speed;
             position = rb.position;
         }
 
         if (Keyboard.current.sKey.isPressed)
         { // Y -
-            // Debug.Log("BAS");
             movement.y -= speed;
             rb.MovePosition(movement);
             position = rb.position;
@@ -104,7 +98,6 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (Keyboard.current.dKey.isPressed)
         { // X +
-            // Debug.Log("DROITE");
             movement.x += speed;
             rb.MovePosition(movement);
             position = rb.position;
