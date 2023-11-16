@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
+using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +19,9 @@ public class NewBehaviourScript : MonoBehaviour
     private AudioClip shotSoundClip;
 
     [SerializeField]
+    private bool invicible;
+
+    [SerializeField]
     private float volume = 1f;
 
     // number of shot/second
@@ -38,38 +37,63 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Update()
     {
-            nextAttackTime -= Time.deltaTime;
-            if( nextAttackTime <= 0)
+        nextAttackTime -= Time.deltaTime;
+        if (nextAttackTime <= 0)
+        {
+            if (Keyboard.current.spaceKey.isPressed)
             {
-                if (Keyboard.current.spaceKey.isPressed)
-                {
-                    Shoot();
-                }
-
-                GameObject boss = GameObject.Find("Boss");
-
-                if(boss != null)
-                {
-                //  float distanceToTheBoss = boss.transform;
-                //  float angleProjectileLeft = Mathf.Sin(()/());
-                    
-                    Instantiate(Bullet, rb.position + new Vector2(-0.5f, 0f), Quaternion.Euler(0f, 0f, 0f));
-                    Instantiate(Bullet, rb.position + new Vector2(0.5f, 0f), Quaternion.Euler(0f, 0f, 0f));
-                }
-                
-                nextAttackTime = (1/shotsPerMinute);
-
+                ShootAutoAim();
+                Shoot();
+                nextAttackTime = (1 / shotsPerMinute);
             }
-
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!(collision.collider.tag == "Wall" || collision.collider.tag == "PlayerBullet"))
         {
+            if(!invicible)
             Destroy(gameObject);
         }
     }
-    private void Shoot()
+
+    private void ShootAutoAim()
+    {
+        // Il faudra globalise ça pour l'ennemi le plus proche
+        GameObject boss = GameObject.Find("Boss");
+
+        if (boss != null)
+        {
+            // sqrt( (x2 - x1 )² + (...)² )
+            float distanceToTheBoss = Mathf.Sqrt(Mathf.Pow(boss.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(boss.transform.position.y - gameObject.transform.position.y, 2));
+            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(boss.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(boss.transform.position.y - boss.transform.position.y, 2));
+
+            if(gameObject.transform.position.y > boss.transform.position.y)
+            {
+                horizontalBoss *= -1;
+            }
+
+            float angleProjectile = Mathf.Rad2Deg * Mathf.Asin(horizontalBoss/distanceToTheBoss);
+
+            Debug.Log("Distance : " + distanceToTheBoss);
+            Debug.Log("Distance H : " + horizontalBoss);
+            Debug.Log("Angle : " + angleProjectile);
+
+            if (gameObject.transform.position.x < boss.transform.position.x)
+            {
+                angleProjectile *= -1;
+            }
+            if (gameObject.transform.position.y > boss.transform.position.y)
+            {
+                angleProjectile += 180;
+            }
+
+            Instantiate(Bullet, rb.position + new Vector2(-0.5f, 0f), Quaternion.Euler(0f, 0f, angleProjectile));
+            Instantiate(Bullet, rb.position + new Vector2(0.5f, 0f), Quaternion.Euler(0f, 0f, angleProjectile));
+        }
+    }
+
+    private void Shoot()    
     {
         for(int i = -10; i <= 10; i += 10)
         {
