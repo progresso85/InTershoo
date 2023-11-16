@@ -8,16 +8,18 @@ public class Boss : MonoBehaviour
 {
     private Vector2 finalPosition = new Vector2(0, 6);
     private int currentHealthbar;
-    private int health = 100;
+    private int health = 10;
     private int healthBarNumber = 2;
 
-    private int burstCount = 4; // number of "wave" the boss will fire
-    private int burstCooldown = 100; // time between each fire of the burst
-    private int reloadCooldown = 2000; // time to reload and fire an another burst
+    private int burstCount; // number of "wave" the boss will fire
+    private int burstCooldown; // time between each fire of the burst
+    private int reloadCooldown; // time to reload and fire an another burst
     // buffer memory
     private int burstCountBuffer = 0;
     private int burstCooldownBuffer = 0;
     private int reloadCooldownBuffer = 0;
+
+    private int addRotation = 0;
 
     private float teleportationTimer = 1;
     private Vector2 Original_coords;
@@ -82,11 +84,11 @@ public class Boss : MonoBehaviour
             }
             if(currentHealthbar == 1)
             {
-                ShootPattern1();
+                ShootPattern2();
             }
             if(currentHealthbar == 0)
             {
-                ShootPattern1 ();
+                ShootPattern3();
             }
         }
     }
@@ -115,7 +117,11 @@ public class Boss : MonoBehaviour
 
     void ShootPattern1()
     {
-        if(burstCountBuffer < burstCount)
+        burstCount = 4;
+        burstCooldown = 100;
+        reloadCooldown = 2000;
+
+        if (burstCountBuffer < burstCount)
         {
             if ((burstCooldownBuffer = burstCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
             {
@@ -135,6 +141,71 @@ public class Boss : MonoBehaviour
             burstCooldownBuffer = 0;
         }
     }
+    
+    void ShootPattern2()
+    {
+        burstCount = 10;
+        burstCooldown = 100;
+        reloadCooldown = 1000;
+
+        if (burstCountBuffer < burstCount)
+        {
+            if ((burstCooldownBuffer = burstCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
+            {
+                burstCountBuffer++;
+                int angle = burstCountBuffer * 10;
+                angle -= burstCooldown / 2;
+                burstCooldownBuffer = burstCooldown;
+                // the value of i the diffence of angle between then
+                for (int i = -10; i <= 10; i += 20)
+                {
+                    Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, angle + i));
+                }
+            }
+        }
+        else
+        {
+            reloadCooldownBuffer = reloadCooldown;
+            burstCountBuffer = 0;
+            burstCooldownBuffer = 0;
+        }
+    }
+
+    void ShootPattern3()
+    {
+        actualBossPointNumber = 0;
+        list_of_coords = new List<Vector2>
+        {
+            new Vector2(0,7)
+        };
+
+        burstCount = 1;
+        burstCooldown = 0;
+        reloadCooldown = 100;
+
+
+        if (burstCountBuffer < burstCount)
+        {
+            if ((burstCooldownBuffer = burstCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
+            {
+                burstCountBuffer++;
+                burstCooldownBuffer = burstCooldown;
+                // the value of i the diffence of angle between then
+                for (int i = 0; i <= 360; i += 36)
+                {
+                    Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i + addRotation));
+                    addRotation += 1;
+                }
+            }
+        }
+        else
+        {
+            reloadCooldownBuffer = reloadCooldown;
+            burstCountBuffer = 0;
+            burstCooldownBuffer = 0;
+        }
+    }
+
 
     void teleportationPatern2()
     {
