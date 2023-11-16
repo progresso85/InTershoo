@@ -238,6 +238,7 @@ MonoBehaviour:
   music: 1
   godMod: 0
   volume: 0.5
+  lives: 3
   shotsPerMinute: 10
 --- !u!50 &8435393460968737542
 Rigidbody2D:

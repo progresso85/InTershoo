@@ -1,11 +1,13 @@
 using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
     private Vector2 movement;
     private Vector2 position;
+    private float cooldownInvincibility = 3f;
     [SerializeField]
     private GameObject Bullet;
 
@@ -33,6 +35,9 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField]
     private float volume = 1f;
 
+    [SerializeField]
+    private int lives;
+
     // number of shot/second
     [SerializeField]
     private float shotsPerMinute;
@@ -58,6 +63,15 @@ public class NewBehaviourScript : MonoBehaviour
                 nextAttackTime = (1 / shotsPerMinute);
             }
         }
+        if (cooldownInvincibility - Time.deltaTime > 0)
+        {
+            cooldownInvincibility -= Time.deltaTime;
+        }
+        else
+        {
+            gameObject.GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 255);
+            godMod = false;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -66,7 +80,20 @@ public class NewBehaviourScript : MonoBehaviour
             if(!godMod)
             {
                 AudioSource.PlayClipAtPoint(deathSoundClip, transform.position, volume);
-                Destroy(gameObject);
+                if (lives > 0)
+                {
+                    lives--;
+                    transform.position = new Vector2(0, -7);
+                    godMod = true;
+                    cooldownInvincibility = 3f;
+                    gameObject.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+                }
+                else
+                {
+                    SceneManager.LoadScene(0);
+                    Destroy(gameObject);
+                }
+                
             }
         }
     }
@@ -80,7 +107,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             // sqrt( (x2 - x1 )² + (y2 - y1)² )
             float distanceToTheBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(ennemy.transform.position.y - gameObject.transform.position.y, 2));
-            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) /* Ce truc est égale à zéro, on s'en fou + Mathf.Pow(ennemy.transform.position.y - ennemy.transform.position.y, 2) */);
+            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) /* Ce truc est égale Ezéro, on s'en fou + Mathf.Pow(ennemy.transform.position.y - ennemy.transform.position.y, 2) */);
 
             if(gameObject.transform.position.y > ennemy.transform.position.y)
             {
