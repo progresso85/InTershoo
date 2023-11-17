@@ -71,6 +71,9 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private float volume;
 
+    [SerializeField]
+    private float shotsvolume;
+
 
     // Start is called before the first frame update
     void Start()
@@ -177,7 +180,7 @@ public class Boss : MonoBehaviour
                 // the value of i the diffence of angle between then
                 for(int i = -20; i <= 20; i += 20)
                 {
-                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
+                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, shotsvolume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i));
                 }
             }
@@ -206,7 +209,7 @@ public class Boss : MonoBehaviour
                 // the value of i the diffence of angle between then
                 for (int i = -10; i <= 10; i += 20)
                 {
-                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
+                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, shotsvolume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, angle + i));
                 }
             }
@@ -240,7 +243,7 @@ public class Boss : MonoBehaviour
                 // the value of i the diffence of angle between then
                 for (int i = 0; i <= 360; i += 36)
                 {
-                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
+                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, shotsvolume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i + addRotation));
                     addRotation += 1;
                 }
