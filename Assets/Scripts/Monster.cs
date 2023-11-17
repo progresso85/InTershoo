@@ -17,7 +17,8 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private AudioClip damageSoundAudio;
 
-    private float volume = 1f;
+    [SerializeField]
+    private float volume;
 
     protected Fire Fire;
     protected float maxPositionY;
