@@ -12,7 +12,6 @@ public class bulletBase : MonoBehaviour
     {
         if (!(collision.collider.tag == "Monster" || collision.collider.tag == "EnemyBullet"))
         {
-            // Debug.Log("Collision");
             Destroy(gameObject);
         }
     }

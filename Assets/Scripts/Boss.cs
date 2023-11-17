@@ -36,6 +36,9 @@ public class Boss : MonoBehaviour
     private HealthBar healthBar;
 
     [SerializeField]
+    private Character character;
+
+    [SerializeField]
     private TextInput textInput;
 
     [SerializeField]
@@ -85,6 +88,7 @@ public class Boss : MonoBehaviour
         textInput.SetText(currentHealthbar.ToString());
         gameObject.transform.position = new Vector2(0, 6);
         actualBossPointNumber = 0;
+        character.SetSpeed(character.GetSpeed()*1.5f);
 
         // patern =
         list_of_coords = new List<Vector2> { 
@@ -140,6 +144,7 @@ public class Boss : MonoBehaviour
         }
         else if (currentHealth < 1 && healthBarNumber > 0)
         {
+            character.InvertLeftRight();
             AllocateRemoveABarBossScore();
             
             healthBarNumber--;
@@ -149,7 +154,6 @@ public class Boss : MonoBehaviour
             }
             else
             {
-                Debug.Log(healthBarNumber);
                 AudioSource.PlayClipAtPoint(healthBarOma, transform.position, volume);
             }
             currentHealthbar = healthBarNumber;
@@ -162,7 +166,6 @@ public class Boss : MonoBehaviour
             AllocateRemoveABarBossScore();
             AllocateKillBossScore();
             Destroy(gameObject);
-            Debug.Log("You killed Boss");
         }
     }
     void ShootPatternTreeShot()

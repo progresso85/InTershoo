@@ -3,12 +3,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Character : MonoBehaviour
 {
     private Vector2 movement;
     private Vector2 position;
     private float cooldownInvincibility = 3f;
     private LivesController livesController;
+    private UnityEngine.InputSystem.Controls.KeyControl left;
+    private UnityEngine.InputSystem.Controls.KeyControl right;
 
     [SerializeField]
     private GameObject Bullet;
@@ -48,6 +50,8 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        left = Keyboard.current.aKey;
+        right = Keyboard.current.dKey;
         movement = Vector2.zero;
         livesController.SetLives(lives);
         if (music)
@@ -104,14 +108,14 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void ShootAutoAim()
     {
-        // Il faudra globalise ça pour l'ennemi le plus proche
+        // Il faudra globalise ï¿½a pour l'ennemi le plus proche
         GameObject ennemy = GameObject.Find("Boss");
 
         if (ennemy != null)
         {
-            // sqrt( (x2 - x1 )² + (y2 - y1)² )
+            // sqrt( (x2 - x1 )ï¿½ + (y2 - y1)ï¿½ )
             float distanceToTheBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(ennemy.transform.position.y - gameObject.transform.position.y, 2));
-            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) /* Ce truc est égale Ezéro, on s'en fou + Mathf.Pow(ennemy.transform.position.y - ennemy.transform.position.y, 2) */);
+            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) /* Ce truc est ï¿½gale ï¿½Ezï¿½ro, on s'en fou + Mathf.Pow(ennemy.transform.position.y - ennemy.transform.position.y, 2) */);
 
             if(gameObject.transform.position.y > ennemy.transform.position.y)
             {
@@ -156,7 +160,7 @@ public class NewBehaviourScript : MonoBehaviour
             position = rb.position;
         }
 
-        if (Keyboard.current.aKey.isPressed)
+        if (left.isPressed)
         { // X -
             movement.x -= speed;
             position = rb.position;
@@ -168,7 +172,7 @@ public class NewBehaviourScript : MonoBehaviour
             position = rb.position;
         }
 
-        if (Keyboard.current.dKey.isPressed)
+        if (right.isPressed)
         { // X +
             movement.x += speed;
             position = rb.position;
@@ -189,6 +193,20 @@ public class NewBehaviourScript : MonoBehaviour
         }
         movement = Vector2.zero;
 
+    }
+    public float GetSpeed()
+    {
+        return speed;
+    }
+    public void SetSpeed(float value)
+    {
+        speed += value;
+    }
+    public void InvertLeftRight()
+    {
+        UnityEngine.InputSystem.Controls.KeyControl oldLeft = left;
+        left = right;
+        right = oldLeft;
     }
     private void Awake()
     {
