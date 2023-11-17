@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 500
   healthBarPrefab: {fileID: 4060276585598361553, guid: 57fafcc585b568e43a576e7c6bd4409d, type: 3}
+  character: {fileID: 1379878796266250289, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+  textInput: {fileID: 0}
   rb: {fileID: 6615413679289730552}
   weapon: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
   healthBarOma: {fileID: 8300000, guid: afca435c19599ea4db0483bdfbdeca3d, type: 3}

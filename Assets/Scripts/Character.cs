@@ -10,12 +10,11 @@ public class Character : MonoBehaviour
     private LivesController livesController;
     private UnityEngine.InputSystem.Controls.KeyControl left;
     private UnityEngine.InputSystem.Controls.KeyControl right;
+    private float speed = 0.15f;
 
     [SerializeField]
     private GameObject Bullet;
 
-    [SerializeField]
-    private float speed;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -54,7 +53,7 @@ public class Character : MonoBehaviour
         movement = Vector2.zero;
         livesController.SetLives(lives);
         if (music)
-            AudioSource.PlayClipAtPoint(stageBGM, transform.position, volume);
+            AudioSource.PlayClipAtPoint(stageBGM, transform.position, 0.8f);
     }
 
     void Update()

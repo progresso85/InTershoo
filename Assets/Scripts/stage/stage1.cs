@@ -4,6 +4,8 @@ using UnityEngine;
 public class Stage1 : MonoBehaviour
 {
     [SerializeField]
+    private Character character;
+    [SerializeField]
     private Spawner spawner;
 
     private List<GameObject> enemies;
@@ -11,6 +13,11 @@ public class Stage1 : MonoBehaviour
     private int step = 0;
     private int timer = 1000, timerBuffer = 0;
     private int mobSummoned = 0;
+
+    private void Start()
+    {
+        character.SetSpeed(0.15f);
+    }
 
     private void Update()
     {
@@ -62,8 +69,8 @@ public class Stage1 : MonoBehaviour
                 }
                 if ((timerBuffer -= (int)(Time.deltaTime * 1000)) <= 0)
                 {
-                    spawner.SpawnJason(6.3f, 7, 5, 6.3f, 10, -6.3f, 0, 0.4f, 0, 300);
-                    spawner.SpawnJason(6.3f, 7, 5, 6.3f, 10, -6.3f, 0, 0.4f, 0, 300);
+                    spawner.SpawnJason(6.3f, 1, 5, 6.3f, 10, -6.3f, -8, -0.2f, 0, 300);
+                    spawner.SpawnJason(6.3f, -1, 5, 6.3f, 10, -6.3f, -8, -0.2f, 0, 300);
                     mobSummoned++;
                     timerBuffer = timer;
                 }
@@ -71,6 +78,7 @@ public class Stage1 : MonoBehaviour
                 if (mobSummoned == 5)
                 {
                     mobSummoned = 0;
+                    timerBuffer = 2000;
                     step++;
                 }
                 break;
@@ -79,7 +87,7 @@ public class Stage1 : MonoBehaviour
                 {
                     if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
                     {
-                        if ((timerBuffer -= (int)(Time.deltaTime * 2000)) <= 0)
+                        if ((timerBuffer -= (int)(Time.deltaTime * 1000)) <= 0)
                         {
                             spawner.SpawnSagume();
                             mobSummoned++;

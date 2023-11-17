@@ -96,7 +96,7 @@ public class Boss : MonoBehaviour
         textInput.SetText(currentHealthbar.ToString());
         gameObject.transform.position = new Vector2(0, 6);
         actualBossPointNumber = 0;
-        character.SetSpeed(character.GetSpeed()*1.5f);
+        character.SetSpeed(character.GetSpeed() * 1.5f);
 
 
         // patern =
@@ -190,9 +190,9 @@ public class Boss : MonoBehaviour
                 burstCountBuffer++;
                 burstCooldownBuffer = burstCooldown;
                 // the value of i the diffence of angle between then
+                AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                 for(int i = -20; i <= 20; i += 20)
                 {
-                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i));
                 }
             }
@@ -218,10 +218,10 @@ public class Boss : MonoBehaviour
                 int angle = burstCountBuffer * 10;
                 angle -= burstCooldown / 2;
                 burstCooldownBuffer = burstCooldown;
+                AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                 // the value of i the diffence of angle between then
                 for (int i = -10; i <= 10; i += 20)
                 {
-                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, angle + i));
                 }
             }
@@ -253,9 +253,9 @@ public class Boss : MonoBehaviour
                 burstCountBuffer++;
                 burstCooldownBuffer = burstCooldown;
                 // the value of i the diffence of angle between then
+                AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                 for (int i = 0; i <= 360; i += 36)
                 {
-                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i + addRotation));
                     addRotation += 1;
                 }
