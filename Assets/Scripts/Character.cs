@@ -3,12 +3,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Character : MonoBehaviour
 {
     private Vector2 movement;
     private Vector2 position;
     private float cooldownInvincibility = 3f;
     private LivesController livesController;
+    private UnityEngine.InputSystem.Controls.KeyControl left = Keyboard.current.aKey;
+    private UnityEngine.InputSystem.Controls.KeyControl right = Keyboard.current.dKey;
 
     [SerializeField]
     private GameObject Bullet;
@@ -156,7 +158,7 @@ public class NewBehaviourScript : MonoBehaviour
             position = rb.position;
         }
 
-        if (Keyboard.current.aKey.isPressed)
+        if (left.isPressed)
         { // X -
             movement.x -= speed;
             position = rb.position;
@@ -168,7 +170,7 @@ public class NewBehaviourScript : MonoBehaviour
             position = rb.position;
         }
 
-        if (Keyboard.current.dKey.isPressed)
+        if (right.isPressed)
         { // X +
             movement.x += speed;
             position = rb.position;
@@ -189,6 +191,20 @@ public class NewBehaviourScript : MonoBehaviour
         }
         movement = Vector2.zero;
 
+    }
+    public float GetSpeed()
+    {
+        return speed;
+    }
+    public void SetSpeed(float value)
+    {
+        speed += value;
+    }
+    public void InvertLeftRight()
+    {
+        UnityEngine.InputSystem.Controls.KeyControl oldLeft = left;
+        left = right;
+        right = oldLeft;
     }
     private void Awake()
     {
