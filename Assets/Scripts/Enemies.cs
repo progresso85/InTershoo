@@ -45,6 +45,7 @@ public class Enemies : MonoBehaviour
 
     protected void Start()
     {
+
     }
 
     protected void OnCollisionEnter2D(Collision2D collision)

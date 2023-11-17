@@ -79,7 +79,6 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private GameObject heathbarCanva;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -179,9 +178,9 @@ public class Boss : MonoBehaviour
     }
     void ShootPatternTreeShot()
     {
-        burstCount = 4;
-        burstCooldown = 100;
-        reloadCooldown = 2000;
+        burstCount = 10;
+        burstCooldown = 300;
+        reloadCooldown = 1000;
 
         if (burstCountBuffer < burstCount)
         {
@@ -191,7 +190,7 @@ public class Boss : MonoBehaviour
                 burstCooldownBuffer = burstCooldown;
                 // the value of i the diffence of angle between then
                 AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
-                for(int i = -20; i <= 20; i += 20)
+                for(int i = 0; i <= 360; i += 30)
                 {
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i));
                 }
@@ -223,6 +222,7 @@ public class Boss : MonoBehaviour
                 for (int i = -10; i <= 10; i += 20)
                 {
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, angle + i));
+                    Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, angle + i + 180));
                 }
             }
         }
@@ -243,7 +243,7 @@ public class Boss : MonoBehaviour
 
         burstCount = 1;
         burstCooldown = 0;
-        reloadCooldown = 100;
+        reloadCooldown = 75;
 
 
         if (burstCountBuffer < burstCount)
