@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -36,6 +35,9 @@ public class Boss : MonoBehaviour
     private HealthBar healthBar;
 
     [SerializeField]
+    private Character character;
+
+    [SerializeField]
     private TextInput textInput;
 
     [SerializeField]
@@ -43,6 +45,21 @@ public class Boss : MonoBehaviour
 
     [SerializeField]
     private GameObject weapon;
+
+    [SerializeField] 
+    private AudioClip healthBarOma;
+
+    [SerializeField] 
+    private AudioClip healthBarNani;
+
+    [SerializeField]
+    private AudioClip dieSoundAudio;
+
+    [SerializeField]
+    private AudioClip damageSoundAudio;
+
+    [SerializeField]
+    private AudioClip bossShotSoundAudio;
 
     [SerializeField]
     private int bossHitPointsValue;
@@ -52,6 +69,9 @@ public class Boss : MonoBehaviour
 
     [SerializeField]
     private int bossKillPointsValue;
+
+    [SerializeField]
+    private float volume;
 
 
     // Start is called before the first frame update
@@ -64,6 +84,7 @@ public class Boss : MonoBehaviour
         textInput.SetText(currentHealthbar.ToString());
         gameObject.transform.position = new Vector2(0, 6);
         actualBossPointNumber = 0;
+        character.SetSpeed(character.GetSpeed()*1.5f);
 
         // patern =
         list_of_coords = new List<Vector2> { 
@@ -93,7 +114,7 @@ public class Boss : MonoBehaviour
         if((reloadCooldownBuffer = reloadCooldownBuffer - (int)(Time.deltaTime * 1000)) <= 0)
         {
             // reloadCooldownBuffer will be reset in shoot when the burst is finish
-            if(currentHealthbar == 2)
+            if (currentHealthbar == 2)
             {
                 ShootPatternTreeShot();
             }
@@ -111,7 +132,7 @@ public class Boss : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         AllocateHitBossScore();
-        Debug.Log(scoreController.GetScore());
+        AudioSource.PlayClipAtPoint(damageSoundAudio, transform.position, volume);
         if (currentHealth > 0)
         {
             currentHealth--;
@@ -119,9 +140,18 @@ public class Boss : MonoBehaviour
         }
         else if (currentHealth < 1 && healthBarNumber > 0)
         {
+            character.InvertLeftRight();
             AllocateRemoveABarBossScore();
-            Debug.Log(scoreController.GetScore());
+            
             healthBarNumber--;
+            if (healthBarNumber == 1)
+            {
+                AudioSource.PlayClipAtPoint(healthBarNani, transform.position, volume);
+            }
+            else
+            {
+                AudioSource.PlayClipAtPoint(healthBarOma, transform.position, volume);
+            }
             currentHealthbar = healthBarNumber;
             textInput.SetText(currentHealthbar.ToString());
             currentHealth = health;
@@ -131,9 +161,7 @@ public class Boss : MonoBehaviour
         {
             AllocateRemoveABarBossScore();
             AllocateKillBossScore();
-            Debug.Log(scoreController.GetScore());
             Destroy(gameObject);
-            Debug.Log("You killed Boss");
         }
     }
     void ShootPatternTreeShot()
@@ -151,6 +179,7 @@ public class Boss : MonoBehaviour
                 // the value of i the diffence of angle between then
                 for(int i = -20; i <= 20; i += 20)
                 {
+                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i));
                 }
             }
@@ -179,6 +208,7 @@ public class Boss : MonoBehaviour
                 // the value of i the diffence of angle between then
                 for (int i = -10; i <= 10; i += 20)
                 {
+                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, angle + i));
                 }
             }
@@ -212,6 +242,7 @@ public class Boss : MonoBehaviour
                 // the value of i the diffence of angle between then
                 for (int i = 0; i <= 360; i += 36)
                 {
+                    AudioSource.PlayClipAtPoint(bossShotSoundAudio, transform.position, volume);
                     Instantiate(weapon, gameObject.transform.position, Quaternion.Euler(0f, 0f, i + addRotation));
                     addRotation += 1;
                 }

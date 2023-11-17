@@ -17,7 +17,8 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private AudioClip damageSoundAudio;
 
-    private float volume = 1f;
+    [SerializeField]
+    private float volume;
 
     protected Fire Fire;
     protected float maxPositionY;
@@ -36,7 +37,6 @@ public class Monster : MonoBehaviour
         }
         else
         {
-            // Debug.Log("Collision");
             AudioSource.PlayClipAtPoint(damageSoundAudio, transform.position, volume);
             health -= 1;
 
