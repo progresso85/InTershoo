@@ -124,6 +124,8 @@ MonoBehaviour:
   dieSoundAudio: {fileID: 8300000, guid: 3f737e7d649bf5f4592eb68708374bb5, type: 3}
   damageSoundAudio: {fileID: 8300000, guid: 6036d630a06b64646a9b5283d2e1ca22, type: 3}
   volume: 0
+  hitValue: 1
+  killValue: 10
   rb: {fileID: 5530339419241162571}
 --- !u!1 &1300246374963527437
 GameObject:

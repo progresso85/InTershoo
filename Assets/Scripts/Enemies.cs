@@ -20,12 +20,19 @@ public class Enemies : MonoBehaviour
     [SerializeField]
     private float volume;
 
+    [SerializeField]
+    private int hitValue;
+    [SerializeField]
+    private int killValue;
+
     protected float maxPositionY;
     protected float maxPositionX;
     protected float minPositionY;
     protected float minPositionX;
     protected float speedX;
     protected float speedY;
+
+    protected ScoreController scoreController;
 
     public void setHealth(int health) { this.health = health; }
     public void setMaxPositionX(float maxPositionX) { this.maxPositionX = maxPositionX; }
@@ -48,14 +55,21 @@ public class Enemies : MonoBehaviour
         }
         else
         {
+            scoreController.AddScore(hitValue);
             AudioSource.PlayClipAtPoint(damageSoundAudio, transform.position, volume);
             health -= 1;
 
             if (health == 0)
             {
+                scoreController.AddScore(killValue);
                 AudioSource.PlayClipAtPoint(dieSoundAudio, transform.position, volume);
                 Destroy(this.gameObject);
             }
         }
+    }
+
+    protected void Awake()
+    {
+        scoreController = FindObjectOfType<ScoreController>();
     }
 }
