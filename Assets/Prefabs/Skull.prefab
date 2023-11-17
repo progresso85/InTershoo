@@ -206,7 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
   dieSoundAudio: {fileID: 8300000, guid: bf6b17c8290346c4daec6c247e85bbe4, type: 3}
-  damageSoundAudio: {fileID: 8300000, guid: b7e419585f520b640a3b4de215eeb8c9, type: 3}
+  damageSoundAudio: {fileID: 8300000, guid: bf6b17c8290346c4daec6c247e85bbe4, type: 3}
+  volume: 0.2
   rb: {fileID: -6270180901971572944}
 --- !u!1 &6839929276352662035
 GameObject:

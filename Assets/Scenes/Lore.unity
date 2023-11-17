@@ -786,7 +786,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 350}
+  m_AnchoredPosition: {x: -450, y: 400}
   m_SizeDelta: {x: 1000, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1549072159
@@ -809,20 +809,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tail Red, d\xE9tentrice du pouvoir des couettes, se trouve \xEAtre la
-    seule capable de r\xE9sister \xE0 l'invasion meme. Ses couettes magiques lui
-    permettent de contrer et de d\xE9jouer les attaques memes, mais elle r\xE9alise
-    rapidement que cette menace est orchestr\xE9e par une entit\xE9 plus puissante.\n\nC'est
-    l\xE0 que Sagume, la d\xE9esse de la lune, entre en sc\xE8ne. Elle d\xE9tecte
-    les perturbations dans l'\xE9quilibre cosmique caus\xE9es par les memes et d\xE9cide
-    d'intervenir. Convaincue que l'origine de cette invasion r\xE9side sur Terre,
-    elle se confronte \xE0 Tail Red, pensant que ses pouvoirs des couettes sont la
-    source de cette perturbation.\n\nUne bataille \xE9pique s'ensuit entre Tail Red
-    et Sagume, chacune utilisant ses pouvoirs uniques. Tail Red, d\xE9fendant la
-    Terre, tente de convaincre Sagume que les memes sont l'ennemi commun et qu'elles
-    devraient unir leurs forces pour les \xE9liminer. Sagume, cependant, est persuad\xE9e
-    que les couettes de Tail Red sont \xE0 l'origine du chaos et qu'elles doivent
-    \xEAtre supprim\xE9es."
+  m_text: 'Tail Red, holder of the power of the quilts, finds herself the only one
+    capable of resisting the meme invasion. Her magical quilts enable her to counter
+    and thwart the meme attacks, but she soon realises that this threat is being
+    orchestrated by a more powerful entity.
+
+
+
+    That''s where Sagume, the goddess
+    of the moon, comes in. She detects the disruption to the cosmic balance caused
+    by the memes and decides to intervene. Convinced that the origin of this invasion
+    lies on Earth, she confronts Tail Red, believing that her powers of the quilts
+    are the source of the disturbance.
+
+
+
+    An epic battle ensues between Tail
+    Red and Sagume, each using their unique powers. Tail Red, defending Earth, tries
+    to convince Sagume that the memes are the common enemy and that they should join
+    forces to eliminate them. Sagume, however, is convinced that Tail Red''s pigtails
+    are the cause of the chaos and must be removed.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
