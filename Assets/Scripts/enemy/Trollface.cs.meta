@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e971197ba39daf1449029dd3660bcbcb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - EnemyBullet: {instanceID: 0}
+  - DamageSoundClip: {instanceID: 0}
+  - DieSoundClip: {instanceID: 0}
+  - rb: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
