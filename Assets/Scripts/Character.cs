@@ -105,25 +105,34 @@ public class NewBehaviourScript : MonoBehaviour
     private void ShootAutoAim()
     {
         // Il faudra globalise ça pour l'ennemi le plus proche
-        GameObject ennemy = GameObject.Find("Boss");
-
-        if (ennemy != null)
+        GameObject enemy = null;
+        float closestDistance = 1000; // juste une grande valeur forcément trop grande
+        foreach (var element in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            if(Vector2.Distance(element.transform.position, gameObject.transform.position) < closestDistance)
+            {
+                enemy = element;
+                closestDistance = Vector2.Distance(element.transform.position, gameObject.transform.position);
+            }
+        }
+        
+        if (enemy != null)
         {
             // sqrt( (x2 - x1 )² + (y2 - y1)² )
-            float distanceToTheBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(ennemy.transform.position.y - gameObject.transform.position.y, 2));
-            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(ennemy.transform.position.x - gameObject.transform.position.x, 2) /* Ce truc est égale Ezéro, on s'en fou + Mathf.Pow(ennemy.transform.position.y - ennemy.transform.position.y, 2) */);
+            float distanceToTheBoss = Mathf.Sqrt(Mathf.Pow(enemy.transform.position.x - gameObject.transform.position.x, 2) + Mathf.Pow(enemy.transform.position.y - gameObject.transform.position.y, 2));
+            float horizontalBoss = Mathf.Sqrt(Mathf.Pow(enemy.transform.position.x - gameObject.transform.position.x, 2) /* Ce truc est égale Ezéro, on s'en fou + Mathf.Pow(ennemy.transform.position.y - ennemy.transform.position.y, 2) */);
 
-            if(gameObject.transform.position.y > ennemy.transform.position.y)
+            if(gameObject.transform.position.y > enemy.transform.position.y)
             {
                 horizontalBoss *= -1;
             }
 
             float angleProjectile = Mathf.Rad2Deg * Mathf.Asin(horizontalBoss/distanceToTheBoss);
-            if (gameObject.transform.position.x < ennemy.transform.position.x)
+            if (gameObject.transform.position.x < enemy.transform.position.x)
             {
                 angleProjectile *= -1;
             }
-            if (gameObject.transform.position.y > ennemy.transform.position.y)
+            if (gameObject.transform.position.y > enemy.transform.position.y)
             {
                 angleProjectile += 180;
             }

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst;
@@ -33,9 +34,9 @@ public class Boss : MonoBehaviour
     private ScoreController scoreController;
 
     [SerializeField]
+    private GameObject healthBarPrefab;
+    private GameObject healthBarGameObject;
     private HealthBar healthBar;
-
-    [SerializeField]
     private TextInput textInput;
 
     [SerializeField]
@@ -71,17 +72,27 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private float volume;
 
+    [SerializeField]
+    private GameObject heathbarCanva;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        healthBarGameObject = Instantiate(healthBarPrefab, new Vector2(0, 0), Quaternion.identity);
+
         // get original position of the boss
         Original_coords = gameObject.transform.position;
+        healthBar = healthBarGameObject.GetComponentInChildren<HealthBar>();
+        textInput = healthBarGameObject.GetComponentInChildren<TextInput>();
+        // healthBar.setTextInput(healthBar.);
+
         healthBar.setMaxHealth(health);
         currentHealthbar = healthBarNumber;
         textInput.SetText(currentHealthbar.ToString());
         gameObject.transform.position = new Vector2(0, 6);
         actualBossPointNumber = 0;
+
 
         // patern =
         list_of_coords = new List<Vector2> { 

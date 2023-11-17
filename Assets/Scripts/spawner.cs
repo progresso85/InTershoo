@@ -1,34 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject Cyclops;
+    GameObject Trollface;
     [SerializeField]
-    GameObject Skull;
+    GameObject Jason;
+    [SerializeField]
+    GameObject Sagume;
 
-    void SpawnCyclops(int x, int y)
+    public void SpawnTrollface(float x, float y, int health, float maxX, float maxY, float minX, float minY, float speedX, float speedY, int timer)
     {
-        Instantiate(Cyclops, new Vector2(x, y), Quaternion.identity);
+        Trollface enemy = Instantiate(Trollface, new Vector2(x, y), Quaternion.identity).GetComponent<Trollface>();
+        enemy.setHealth(health);
+
+        enemy.setSpeedX(speedX);
+        enemy.setSpeedY(speedY);
+
+        enemy.setMaxPositionX(maxX); enemy.setMaxPositionY(maxY);
+        enemy.setMinPositionX(minX); enemy.setMinPositionY(minY);
+
+        enemy.setTimer(timer);
     }
 
-    void SpawnSkull(int x, int y)
+    public void SpawnJason(float x, float y, int health, float maxX, float maxY, float minX, float minY, float speedX, float speedY, int timer)
     {
-        Instantiate(Skull, new Vector2(x, y), Quaternion.identity);
+        Jason enemy = Instantiate(Jason, new Vector2(x, y), Quaternion.identity).GetComponent<Jason>();
+        enemy.setHealth(health);
+
+        enemy.setSpeedX(speedX);
+        enemy.setSpeedY(speedY);
+
+        enemy.setMaxPositionX(maxX); enemy.setMaxPositionY(maxY);
+        enemy.setMinPositionX(minX); enemy.setMinPositionY(minY);
+
+        enemy.setTimer(timer);
+    }
+
+    public void SpawnSagume()
+    {
+        Instantiate(Sagume, new Vector2(0, 0), Quaternion.identity);
     }
 
     void Update()
     {
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            SpawnCyclops(-5, 5);
+            // SpawnTrollface(-5, 5, 5, );
         }
         if (Keyboard.current.tKey.wasPressedThisFrame)
         {
-            SpawnSkull(5, 5);
+            // SpawnJason(5, 5);
         }
     }
 }

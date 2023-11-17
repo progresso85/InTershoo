@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 247fc5c1b4059fa4d8125b4c22aac472
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - EnemyBullet: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
+  - dieSoundAudio: {instanceID: 0}
+  - damageSoundAudio: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

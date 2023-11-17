@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 295387445245542336}
   m_Layer: 7
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,8 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 500
-  healthBar: {fileID: 0}
-  textInput: {fileID: 0}
+  healthBarPrefab: {fileID: 4060276585598361553, guid: 57fafcc585b568e43a576e7c6bd4409d, type: 3}
   rb: {fileID: 6615413679289730552}
   weapon: {fileID: 6655426466972406339, guid: f40c4be9c3af3ac4e9ce0119c0af3ae4, type: 3}
   healthBarOma: {fileID: 8300000, guid: afca435c19599ea4db0483bdfbdeca3d, type: 3}
@@ -114,6 +113,7 @@ MonoBehaviour:
   bossRemoveABarPointsValue: 10
   bossKillPointsValue: 100
   volume: 1
+  heathbarCanva: {fileID: 4060276585598361553, guid: 57fafcc585b568e43a576e7c6bd4409d, type: 3}
 --- !u!50 &6615413679289730552
 Rigidbody2D:
   serializedVersion: 4
