@@ -731,6 +731,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &598683104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1207423397653191309, guid: c0df977c872eec248b7917b5af6c6e93, type: 3}
+  m_PrefabInstance: {fileID: 122567363602251129}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05582024d5477a49996deb4b5b2ab97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &654031014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,6 +1030,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &845160476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -395410623073107963, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+  m_PrefabInstance: {fileID: 2054460091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ddf9a75f1e0fe449e1eb2ff18b63e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &978306993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3533,6 +3555,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -395410623073107963, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: OnLiveChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -395410623073107963, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: OnLiveChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 598683104}
+    - target: {fileID: -395410623073107963, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: OnLiveChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateLives
+      objectReference: {fileID: 0}
+    - target: {fileID: -395410623073107963, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: OnLiveChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LivesUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -395410623073107963, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: OnLiveChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 845160476}
+    - target: {fileID: -395410623073107963, guid: 13989ecb15110364fa0237b04e758575, type: 3}
+      propertyPath: OnLiveChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: LivesController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1379878796266250289, guid: 13989ecb15110364fa0237b04e758575, type: 3}
       propertyPath: invicible
       value: 0
