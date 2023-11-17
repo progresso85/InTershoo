@@ -151,7 +151,6 @@ public class Boss : MonoBehaviour
             }
             else
             {
-                Debug.Log(healthBarNumber);
                 AudioSource.PlayClipAtPoint(healthBarOma, transform.position, volume);
             }
             currentHealthbar = healthBarNumber;
@@ -164,7 +163,6 @@ public class Boss : MonoBehaviour
             AllocateRemoveABarBossScore();
             AllocateKillBossScore();
             Destroy(gameObject);
-            Debug.Log("You killed Boss");
         }
     }
     void ShootPatternTreeShot()
