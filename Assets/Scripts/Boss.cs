@@ -111,7 +111,6 @@ public class Boss : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         AllocateHitBossScore();
-        Debug.Log(scoreController.GetScore());
         if (currentHealth > 0)
         {
             currentHealth--;
@@ -120,7 +119,6 @@ public class Boss : MonoBehaviour
         else if (currentHealth < 1 && healthBarNumber > 0)
         {
             AllocateRemoveABarBossScore();
-            Debug.Log(scoreController.GetScore());
             healthBarNumber--;
             currentHealthbar = healthBarNumber;
             textInput.SetText(currentHealthbar.ToString());
@@ -131,7 +129,6 @@ public class Boss : MonoBehaviour
         {
             AllocateRemoveABarBossScore();
             AllocateKillBossScore();
-            Debug.Log(scoreController.GetScore());
             Destroy(gameObject);
             Debug.Log("You killed Boss");
         }
