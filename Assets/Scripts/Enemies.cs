@@ -48,7 +48,6 @@ public class Enemies : MonoBehaviour
         }
         else
         {
-            // Debug.Log("Collision");
             AudioSource.PlayClipAtPoint(damageSoundAudio, transform.position, volume);
             health -= 1;
 

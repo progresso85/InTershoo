@@ -29,7 +29,6 @@ public class Bullet : MonoBehaviour
     {
         if(!(collision.collider.tag == "Player" || collision.collider.tag == "PlayerBullet"))
         {
-            // Debug.Log("Collision");
             Destroy(gameObject);
         }
     }
