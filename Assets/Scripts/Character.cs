@@ -8,6 +8,8 @@ public class NewBehaviourScript : MonoBehaviour
     private Vector2 movement;
     private Vector2 position;
     private float cooldownInvincibility = 3f;
+    private LivesController livesController;
+
     [SerializeField]
     private GameObject Bullet;
 
@@ -36,7 +38,7 @@ public class NewBehaviourScript : MonoBehaviour
     private float volume = 1f;
 
     [SerializeField]
-    private int lives;
+    public int lives;
 
     // number of shot/second
     [SerializeField]
@@ -47,7 +49,8 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
         movement = Vector2.zero;
-        if(music)
+        livesController.SetLives(lives);
+        if (music)
             AudioSource.PlayClipAtPoint(stageBGM, transform.position, volume);
     }
 
@@ -83,6 +86,7 @@ public class NewBehaviourScript : MonoBehaviour
                 if (lives > 0)
                 {
                     lives--;
+                    livesController.ReduceLives();
                     transform.position = new Vector2(0, -7);
                     godMod = true;
                     cooldownInvincibility = 3f;
@@ -185,5 +189,10 @@ public class NewBehaviourScript : MonoBehaviour
         }
         movement = Vector2.zero;
 
+    }
+    private void Awake()
+    {
+        // works only if there is only one score (one player game)
+        livesController = FindObjectOfType<LivesController>();
     }
 }
